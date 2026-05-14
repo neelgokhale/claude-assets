@@ -1,9 +1,9 @@
 ---
-name: write-prd
-description: Create a PRD through user interview, codebase exploration, and module design, then submit as a GitHub issue. Use when user wants to write a PRD, create a product requirements document, or plan a new feature.
+name: write-trd
+description: Create a TRD through user interview, codebase exploration, and module design, then file it as a GitHub issue (with "trd" label). Use when user wants to write a TRD, create a technical requirements document, or plan a new feature.
 ---
 
-This skill will be invoked when the user wants to create a PRD. You may skip steps if you don't consider them necessary.
+This skill will be invoked when the user wants to create a TRD. You may skip steps if you don't consider them necessary.
 
 1. Ask the user for a long, detailed description of the problem they want to solve and any potential ideas for solutions.
 
@@ -17,9 +17,18 @@ A deep module (as opposed to a shallow module) is one which encapsulates a lot o
 
 Check with the user that these modules match their expectations. Check with the user which modules they want tests written for.
 
-5. Once you have a complete understanding of the problem and solution, use the template below to write the PRD. The PRD should be submitted as a GitHub issue.
+5. Once you have a complete understanding of the problem and solution, use the template below to write the TRD.
 
-<prd-template>
+6. Create a GitHub issue using the `gh` CLI:
+   - **Title**: a short, descriptive title for the feature
+   - **Body**: the full TRD content using the template below
+   - **Label**: "trd" (create the label if it does not already exist in the repo with `gh label create trd`)
+
+   Use: `gh issue create --title "..." --body "..." --label "trd"`
+
+   After creating the issue, tell the user the GitHub issue URL and remind them they can run the `trd-to-issues` skill to break it into tracer-bullet sub-issues.
+
+<trd-template>
 
 ## Problem Statement
 
@@ -65,10 +74,10 @@ A list of testing decisions that were made. Include:
 
 ## Out of Scope
 
-A description of the things that are out of scope for this PRD.
+A description of the things that are out of scope for this TRD.
 
 ## Further Notes
 
 Any further notes about the feature.
 
-</prd-template>
+</trd-template>
